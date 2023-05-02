@@ -1,47 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Mulish:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Mulish:wght@300;500;700&display=swap");
+
 @import "normalize.css";
 
 #root {
   max-width: 768px;
-  padding: 2rem;
-  font-family:'Mulish', sans-serif
+  margin: 0 auto;
+
+  font-family: "Mulish", sans-serif;
 }
 
- body,
+body,
 h1,
 h2,
 h3,
 figure,
-p{
+p {
   margin: 0;
   padding: 0;
-} 
-
-h1,h2{
-  font-family:"Merriweather",serif ;
 }
-.flexcontainer{
+
+h1,
+h2 {
+  font-family: "Merriweather", serif;
+  color: #110e47;
+}
+
+h3 {
+  font-weight: 700px;
+}
+.flexcontainer {
   display: flex;
-
+  gap: 16px;
 }
-.gridContainer{
+.gridContainer {
   display: grid;
 }
-.justify{
+.justify {
   justify-content: space-between;
   align-items: center;
 }
 
-header{
+/* header {
   height: 60px;
   grid-template-columns: 1fr 1fr 1fr;
-}
+  width: calc(100vw - 4rem);
+  margin: 0 -2rem;
+} */
 .movieCardContainer {
+
   margin: 2rem -2rem;
+  padding: 0 1rem 0 2rem;
   gap: 1rem;
-  padding-left: 2rem;
-  padding-right: 1rem;
-  height: 320px;
   overflow-x: scroll;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
@@ -49,4 +58,68 @@ header{
 }
 .movieCardContainer::-webkit-scrollbar {
   display: none;
+}
+
+.HorizontalMovieListContainer {
+  padding: 76px 0 0;
+}
+.VerticalMovieListContainer {
+  padding: 0 0 76px;
+}
+.movieItemContainer {
+
+  flex-direction: column;
+  gap: 16px;
+}
+.containerLabel {
+  margin-top: 2px;
+}
+
+
+
+.moviecardcontaner {
+  margin: 0 auto;
+ 
+}
+.img2 {
+  width: 85px;
+  height: 121px;
+}
+.movieListContainerLayout{
+  margin-bottom: 60px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+
+}
+
+footer {
+  margin-top: 60px;
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  padding: 0 2rem;
+  width: calc(100vw - 4rem);
+  background-color:rgb(255, 255, 255);
+
+}
+main {
+  padding: 0 2rem;
+}
+
+header {
+  position: fixed;
+  height: 60px;
+  padding: 0 2rem;
+  width: calc(100vw - 4rem);
+  background-color: rgb(255, 255, 255);
+  top: 0;
+
+}
+.VerticalMovieListTitleLayout {
+  position: sticky;
+  top: 60px;
+  background-color: #ffffff;
+
 }

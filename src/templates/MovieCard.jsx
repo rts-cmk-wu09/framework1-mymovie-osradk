@@ -8,18 +8,22 @@ const StyledArticle= styled.article`
 height:283px;
 display:flex;
 flex-direction:column;
-justify-content:space-between
+justify-content:space-between;
+
 
 `;
 
-const MovieCard = () => {
+const MovieCard = (props) => {
     return (
   <StyledArticle>
         <figure>
-<Image/>
+<Image width="143" height="212"/>
+
 </figure>
-<h3>Title</h3>
+<Heading title={props.title} size="14"  as="h3"/>
+
 <MovieRating />
+
         </StyledArticle>
    );
 };

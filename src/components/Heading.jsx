@@ -1,33 +1,18 @@
-// import styled from "styled-components";
-
-// const StyledHeading = styled.h1`
-    
-//     font-size: ${(props) => props.size};
-// color:#110e47;
-// justify-self:center;
-
-// `;
-
-// const  Heading= ({text})=>{
-  
-
-//     return (<StyledHeading>{text}</StyledHeading>)  
-// };
-// export default Heading;
 
 
 import styled from "styled-components";
 
-const StyledHeading = styled.h1`
-  font-size: ${(props) => props.size};
-  color: #110e47;
-  justify-self: center;
+const StyledHeading = styled(props=> props.as)`
+  font-size: ${props => props.size}px;
+  padding-left:${props => props.paddingLeft}px;
+  padding-top: ${props => props.padding}px;
+  grid-column-start: 2;
+text-align:center;
+  align-self:center;
 `;
 
-const Heading = ({ text }) => {
-  return <StyledHeading>{text}</StyledHeading>;
+const Heading = (props) => {
+  return <StyledHeading {...props}>{props.title}</StyledHeading>;
 };
-// const Heading = (props) => {
-//   return <StyledHeading>{props.text}</StyledHeading>;
-// };
+
 export default Heading;

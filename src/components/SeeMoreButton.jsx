@@ -2,18 +2,19 @@ import styled from "styled-components";
 const Button= styled.button`
 width: 61px;
 height: 21px;
-border-radius:25px;
+border-radius:100px;
 border:solid 1px;
-font-size:10px;
-lertter-spacing:2px;
+font-size:8px;
+padding:4px 8px;
 background-color:white;
 color:#aaa9b1;
 
+
 `
 
-const SeeMoreButton = () => {
+const SeeMoreButton = (props) => {
     return ( 
-        <Button>See More</Button>
+        <Button {...props}>{props.title}</Button>
      );
 }
  
