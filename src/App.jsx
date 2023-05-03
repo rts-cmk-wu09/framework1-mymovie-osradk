@@ -7,14 +7,12 @@ import Switch from "./components/Switch";
 import MovieItem from "./templates/MovieItem";
 import FooterComponent from "./components/FooterComponent";
 
-
-
-
-
+import DetailView from "./DetailView";
 function App() {
   return (
+    // <DetailView/>
     <div className="App">
-      <header className="gridContainer">
+       <header className="gridContainer">
         <Heading title="MyMovie" size="16" as="h1" />
 
         <Switch />
@@ -71,11 +69,9 @@ Home"
         <nav>
           <FooterComponent />
         </nav>
-      </footer>
+      </footer> 
+      
     </div>
-
-
-
   );
 }
 

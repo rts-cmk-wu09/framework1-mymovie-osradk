@@ -5,7 +5,6 @@
 #root {
   max-width: 768px;
   margin: 0 auto;
-
   font-family: "Mulish", sans-serif;
 }
 
@@ -40,14 +39,13 @@ h3 {
   align-items: center;
 }
 
-/* header {
+header {
   height: 60px;
   grid-template-columns: 1fr 1fr 1fr;
   width: calc(100vw - 4rem);
   margin: 0 -2rem;
-} */
+}
 .movieCardContainer {
-
   margin: 2rem -2rem;
   padding: 0 1rem 0 2rem;
   gap: 1rem;
@@ -67,31 +65,27 @@ h3 {
   padding: 0 0 76px;
 }
 .movieItemContainer {
-
   flex-direction: column;
   gap: 16px;
 }
 .containerLabel {
-  margin-top: 2px;
+  margin-bottom:16px;
+  margin-top: 16px;
 }
-
-
 
 .moviecardcontaner {
   margin: 0 auto;
- 
 }
 .img2 {
   width: 85px;
   height: 121px;
 }
-.movieListContainerLayout{
+.movieListContainerLayout {
   margin-bottom: 60px;
   margin-top: 8px;
   display: flex;
   flex-direction: column;
   gap: 23px;
-
 }
 
 footer {
@@ -101,8 +95,7 @@ footer {
   height: 60px;
   padding: 0 2rem;
   width: calc(100vw - 4rem);
-  background-color:rgb(255, 255, 255);
-
+  background-color: rgb(255, 255, 255);
 }
 main {
   padding: 0 2rem;
@@ -115,11 +108,89 @@ header {
   width: calc(100vw - 4rem);
   background-color: rgb(255, 255, 255);
   top: 0;
-
 }
 .VerticalMovieListTitleLayout {
   position: sticky;
   top: 60px;
   background-color: #ffffff;
+}
 
+.fff {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 1;
+  top: 64px;
+}
+
+/* .ddd{
+position: relative;
+top: 0;
+
+}  
+ .ddd img{
+  position: absolute
+}  */
+
+.center {
+  position: absolute;
+  top: 128px;
+  left:173px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.jjj {
+  margin-right: 266px;
+  margin-left: 24px;
+}
+.demo {
+  background-color: white;
+  padding-top: 24px;
+  margin-top: 228px;
+  /* margin-left: 10px; */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: absolute;
+  max-width: 768px;
+}
+.center p {
+  color: white;
+}
+.flexdiv {
+  display: flex;
+  flex-direction: column;
+}
+.gggg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.flexdiv h4 {
+  color: #9c9c9c;
+  font-size: 12px;
+  font-weight: 400;
+}
+.description {
+  padding-top: 24px;
+}
+.description h2 {
+  color: #110e47;
+  font-size: 16px;
+  display: inline-block;
+  line-height: 8px;
+}
+.description p {
+  max-width: 327px;
+  font-size: 12px;
+  line-height: 22px;
+  color: #9c9c9c;
+}
+
+.headerScetion8 {
+  background-image: url("./assets/video.png");
+  width: 375px;
+  height: 300px;
 }

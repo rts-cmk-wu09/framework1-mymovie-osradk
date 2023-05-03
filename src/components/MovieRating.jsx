@@ -14,12 +14,15 @@ font-size:12px;
 const StyledDiv =styled.div`
 display:flex;
 
+padding-top:${props => props.padding}px;
+padding-bottom:${props => props.padding}px;
+
 `
 
 
-const MovieRating = () => {
+const MovieRating = (props) => {
     return (
-        <StyledDiv>
+        <StyledDiv {...props}>
           <StyledFaStar />
           <StyledP>9.1/10 IMDb</StyledP>
         </StyledDiv>
