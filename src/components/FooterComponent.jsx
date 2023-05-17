@@ -5,22 +5,22 @@ import { BsTicket } from "react-icons/bs";
 
 const StyledBookmark = styled(FaRegBookmark)`
   font-size: 24px;
-  color:#BCBCCD;
+  color: #bcbccd;
 `;
 const StyledFilm = styled(FcFilmReel)`
   font-size: 24px;
-  color:#BCBCCD;
+  color: #bcbccd;
 `;
 const StyledFTicket = styled(BsTicket)`
   font-size: 24px;
   transform: rotate(90deg);
-  color:#BCBCCD;
+  color: #bcbccd;
 `;
 const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:20px 53px;
+  padding: 20px 53px;
 `;
 
 const FooterComponent = () => {
@@ -28,8 +28,8 @@ const FooterComponent = () => {
     <StyledDiv>
       <StyledFilm />
       <StyledFTicket />
-       <StyledBookmark />
-       </StyledDiv>
+      <StyledBookmark />
+    </StyledDiv>
   );
 };
 

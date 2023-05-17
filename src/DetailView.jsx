@@ -1,5 +1,6 @@
 import "./App.css";
-import MovieDescription from "./templates/MovieDescription"
+
+import MovieDescription from "./templates/MovieDescription";
 import DetailImage from "./assets/video.png";
 import styled from "styled-components";
 import CategoryLabel from "./components/CategoryLabel";
@@ -8,17 +9,13 @@ import { BsFillPlayCircleFill } from "react-icons/bs";
 import Heading from "./components/Heading";
 import Switch from "./components/Switch";
 import MovieRating from "./components/MovieRating";
-import Image from "./components/Image";
 import MovieCast from "./templates/MovieCast";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import { FaArrowLeft, FaPlay, FaRegBookmark } from "react-icons/fa";
 const StyledFaArrowLeft = styled(FaArrowLeft)`
   color: #fff;
-`;
-const StyledHeader = styled.header`
-  background-image: url(${DetailImage});
-  background-size: cover;
-  height: 300px;
-  width: 375px;
 `;
 
 const StyledBookmark = styled(FaRegBookmark)`
@@ -31,78 +28,111 @@ const StyledBsArrowLeft = styled(BsArrowLeft)`
   color: white;
 `;
 
-const StyledBsFillPlayCircleFill = styled(BsFillPlayCircleFill)`
-  font-size: 45px;
-  color: #ffff;
+const StyledIframe = styled.iframe`
+  width: 100vw;
+  height: 300px;
+  position: absolute;
+  left: 0;
+`;
+
+const StyledHeader = styled.header`
+  position: relative;
 `;
 
 function DetailView() {
+  const navigate = useNavigate();
+  const DetailData = useLoaderData();
+  console.log("DetailsData: ", DetailData);
+  // console.log(MovieDetail.cast);
+
   return (
     <div className="App">
       <StyledHeader>
+        <StyledIframe
+          width="100%"
+          height="100%"
+          src={`https://www.youtube.com/embed/${DetailData.details.videos.results[0].key}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></StyledIframe>
         <div className="fff">
           <div className="jjj">
-            <StyledBsArrowLeft />
+            <Link
+              to="#"
+              onClick={() => {
+                navigate(-1);
+                ("");
+              }}
+            >
+              <StyledBsArrowLeft />
+            </Link>
           </div>
           <div>
-            {" "}
-            <Switch />{" "}
-          </div>
-        </div>
-        <div className="center">
-          <div>
-            {" "}
-            <StyledBsFillPlayCircleFill />
-          </div>
-          <div>
-            {" "}
-            <p>Play Trailer</p>{" "}
+            <Switch />
           </div>
         </div>
       </StyledHeader>
       <main className="demo">
-       
-          <div className="flexcontainer justify">
-            <Heading
-              title="Spiderman: No Way 
-Home"
-              width="198"
-              size="20"
-              as="h2"
-            />
-            <StyledBookmark />
-          </div>
-          <div>
-            <MovieRating  padding="10"/>
-          </div>
-          <div className="containerLabel">
-            <CategoryLabel title="HORROR" />
-            <CategoryLabel title="MYSTERY" />
-            <CategoryLabel title="THRILER" />
-          </div>
+        <div className="flexcontainer justify">
+          <Heading
+            title={DetailData.details.title}
+            width="198"
+            size="20"
+            as="h2"
+          />
+          <StyledBookmark />
+        </div>
+        <div>
+          <MovieRating
+            padding="10"
+            voteAverage={DetailData.details.vote_average}
+          />
+        </div>
+        <div className="containerLabel">
+          <CategoryLabel title="HORROR" />
+          <CategoryLabel title="MYSTERY" />
+          <CategoryLabel title="THRILER" />
+        </div>
 
-          <section className="gggg">
-            <div className="flexdiv">
-              <h4>Length</h4>
-              <p>2h 28min</p>
-            </div>
-            <div className="flexdiv">
-              <h4>Language</h4>
-              <p>English</p>
-            </div>
-            <div className="flexdiv">
-              <h4>Rating</h4>
-              <p>PG-13</p>
-            </div>
-          </section>
-          <MovieDescription/>
-             <MovieCast />
-       
-
-     
+        <section className="gggg">
+          <div className="flexdiv">
+            <h4>Length</h4>
+            <p>{DetailData.details.runtime}</p>
+          </div>
+          <div className="flexdiv">
+            <h4>Language</h4>
+            <p>{DetailData.details.spoken_languages[0].name}</p>
+          </div>
+          <div className="flexdiv">
+            <h4>Rating</h4>
+            <p>{DetailData.details.vote_count}</p>
+          </div>
+        </section>
+        <MovieDescription />
+        <MovieCast data={DetailData.cast} />
       </main>
     </div>
   );
 }
+
+export const DetailsViewData = async ({ params }) => {
+  console.log("params:" + params.id);
+  return Promise.allSettled([
+    axios(
+      `http://api.themoviedb.org/3/movie/${params.id}?api_key=a1f2e68a40958dfb3a6c547ab28ee83d&append_to_response=videos`
+    ),
+    axios(
+      `http://api.themoviedb.org/3/movie/${params.id}/credits?api_key=a1f2e68a40958dfb3a6c547ab28ee83d`
+    ),
+  ]).then((data) => {
+    console.log("data: " + data);
+    return {
+      details: data[0].value.data,
+      cast: data[1].value.data,
+    };
+  });
+};
 
 export default DetailView;

@@ -1,10 +1,35 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-// import './index.css'
+import App from "./App";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Listevisning from "./Listevisning";
+import ErrorView from "./ErrorView";
+import DetailView from "./DetailView";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
+
+import { listViewData } from "./Listevisning";
+import { DetailsViewData } from "./DetailView";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />} errorElement={<ErrorView />}>
+      <Route index loader={listViewData} element={<Listevisning />} />
+
+      <Route
+        path="/details/:id"
+        loader={DetailsViewData}
+        element={<DetailView />}
+      />
+    </Route>
+  )
+);
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

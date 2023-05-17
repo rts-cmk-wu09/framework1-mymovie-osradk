@@ -7,6 +7,7 @@ const StyledHeading = styled(props=> props.as)`
   padding-left:${props => props.paddingLeft}px;
   padding-top: ${props => props.padding}px;
   font-weight:${props => props.Weight};
+  text-align:${props => props.textAlign};
 width: ${props => props.width}px;
   grid-column-start: 2;
 ${'' /* text-align: center; */}

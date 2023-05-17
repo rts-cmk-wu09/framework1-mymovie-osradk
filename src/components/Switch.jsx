@@ -7,6 +7,8 @@ const StyledSwitch = styled(ReactSwitch)`
   justify-self: end;
   align-self: center;
 
+
+
 `;
 
 const Switch = () => {

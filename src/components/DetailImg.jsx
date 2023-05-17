@@ -7,6 +7,7 @@ const StyledImg = styled.img`
 `;
 
 const DetailImage = (props) => {
+  console.log(props.taregh);
   return <StyledImg src={coverimage} alt="blablabla" width={props.width} />;
 };
 export default DetailImage;
