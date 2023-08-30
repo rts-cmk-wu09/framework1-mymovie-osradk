@@ -1,11 +1,9 @@
 import "./App.css";
 
 import MovieDescription from "./templates/MovieDescription";
-import DetailImage from "./assets/video.png";
 import styled from "styled-components";
 import CategoryLabel from "./components/CategoryLabel";
 import { BsArrowLeft } from "react-icons/bs";
-import { BsFillPlayCircleFill } from "react-icons/bs";
 import Heading from "./components/Heading";
 import Switch from "./components/Switch";
 import MovieRating from "./components/MovieRating";
@@ -86,7 +84,7 @@ function DetailView() {
         </div>
         <div>
           <MovieRating
-            padding="10"
+           
             voteAverage={DetailData.details.vote_average}
           />
         </div>

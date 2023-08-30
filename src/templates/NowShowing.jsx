@@ -53,8 +53,10 @@ const NowShowing = () => {
               }
               size="14"
               as="h3"
+              paddingLeft="0"
+              margin="0"
             />
-            <MovieRating voteAverage={data.vote_average} />
+            <MovieRating voteAverage={data.vote_average}/>
           </StyledArticle>
         </Link>
       ))}

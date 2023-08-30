@@ -4,20 +4,24 @@ import Image from "../components/Image";
 const StyledFigure = styled.figure`
   flex-basis: 20%;
   margin-bottom: 1rem;
-  gap:10px;
+  gap: 10px;
 `;
 const StyledFigCaption = styled.figcaption`
   margin-top: 10px;
   font-size: 12px;
   word-wrap: break-word;
 `;
-const Actor = ({data}) => {
+const Actor = ({ data }) => {
   return (
     <StyledFigure>
-      <Image 
-            src={`https://image.tmdb.org/t/p/w200/${data.profile_path}`}
-        objectFit={true}
-      width="72" height="72" />
+      {data.profile_path && (
+        <Image
+          src={`https://image.tmdb.org/t/p/w200/${data.profile_path}`}
+          objectFit={true}
+          width="72"
+          height="72"
+        />
+      )}
       <StyledFigCaption>{data.name}</StyledFigCaption>
     </StyledFigure>
   );

@@ -1,13 +1,11 @@
 import "./App.css";
-
-import MovieRating from "./components/MoviePopular";
 import NowShowing from "./templates/NowShowing";
 import SeeMoreButton from "./components/SeeMoreButton";
 import Heading from "./components/Heading";
 import Switch from "./components/Switch";
 import MovieItem from "./templates/MovieItem";
 import FooterComponent from "./components/FooterComponent";
-import { Link } from "react-router-dom";
+
 
 import axios from "axios";
 
@@ -15,7 +13,7 @@ const Listevisning = () => {
   return (
     <>
       <header className="gridContainer">
-        <Heading title="MyMovie" size="16" as="h1" textAlign="center" />
+        <Heading title="MyMovie" size="16" as="h1" textAlign="center" align="center" />
 
         <Switch />
       </header>

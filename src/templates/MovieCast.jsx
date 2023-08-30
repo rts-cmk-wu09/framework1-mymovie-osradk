@@ -4,12 +4,10 @@ import Heading from "../components/Heading";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-between;
+  justify-content: space-between;
   margin-top: 16px;
-
 `;
 
 const MovieCast = ({ data }) => {
@@ -21,11 +19,12 @@ const MovieCast = ({ data }) => {
         <SeeMoreButton title="Se More" margin="24" />
       </div>
       <StyledDiv>
-        {data.cast.map((actor) => actor.profile_path && <Actor data={actor} />)}
+        {data.cast.map(
+          (actor) => actor.profile_path && <Actor data={actor} key={actor.id} />
+        )}
       </StyledDiv>
     </>
   );
 };
-
 
 export default MovieCast;

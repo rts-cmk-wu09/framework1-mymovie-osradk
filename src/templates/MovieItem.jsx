@@ -40,7 +40,7 @@ const MovieItem = (props) => {
   return (
     <>
       {MovieData.popular.map((data) => (
-        <StyledArticleP>
+        <StyledArticleP key={data.id}>
           <figure>
             <Image
               width="85"

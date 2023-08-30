@@ -6,6 +6,7 @@ const StyledFaStar = styled(FaStar)`
   color: #ffc319;
   font-size: 12px;
   margin-right: 4px;
+
 `;
 const StyledP = styled.p`
   color: #9c9c9c;
@@ -21,7 +22,7 @@ const StyledDiv = styled.div`
 const MovieRating = (props) => {
   return (
     <StyledDiv {...props}>
-      <StyledFaStar />
+      <StyledFaStar/>
       <StyledP>{props.voteAverage}/10 IMDb</StyledP>
     </StyledDiv>
   );
