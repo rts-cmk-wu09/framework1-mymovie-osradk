@@ -5,17 +5,24 @@ import Heading from "./components/Heading";
 import Switch from "./components/Switch";
 import MovieItem from "./templates/MovieItem";
 import FooterComponent from "./components/FooterComponent";
-
-
 import axios from "axios";
+// import { useState } from "react";
 
 const Listevisning = () => {
+  // const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // // Funktion til at skifte dark mode-tilstand
+  // const handleDarkModeChange = (newDarkModeValue) => {
+  //   setIsDarkMode(newDarkModeValue);
+  // };
+
   return (
     <>
-      <header className="gridContainer">
-        <Heading title="MyMovie" size="16" as="h1" textAlign="center" align="center" />
 
-        <Switch />
+      <header  className="gridContainer dark:bg-black">
+        <Heading title="MyMovie" size="16" as="h1" textAlign="center" align="center" />
+      
+        <Switch  />
       </header>
       <main>
         <section className="HorizontalMovieListContainer">
@@ -28,7 +35,7 @@ const Listevisning = () => {
           </div>
         </section>
         <section className="movieItemContainer">
-          <div className="flexcontainer justify VerticalMovieListTitleLayout">
+          <div className="flexcontainer justify VerticalMovieListTitleLayout  dark:bg-black">
             <Heading title="Popular" size="16" as="h2" />
             <SeeMoreButton title="Se More" />
           </div>
@@ -39,11 +46,12 @@ const Listevisning = () => {
           </div>
         </section>
       </main>
-      <footer>
+      <footer className="gridContainer dark:bg-black">
         <nav>
           <FooterComponent />
         </nav>
       </footer>
+      
     </>
   );
 };

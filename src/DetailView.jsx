@@ -10,15 +10,13 @@ import MovieRating from "./components/MovieRating";
 import MovieCast from "./templates/MovieCast";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
+import FooterComponent from "./components/FooterComponent";
 
-import { FaArrowLeft, FaPlay, FaRegBookmark } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
+import Favorite from "./components/Favorite";
+
 const StyledFaArrowLeft = styled(FaArrowLeft)`
   color: #fff;
-`;
-
-const StyledBookmark = styled(FaRegBookmark)`
-  font-size: 24px;
-  color: #bcbccd;
 `;
 
 const StyledBsArrowLeft = styled(BsArrowLeft)`
@@ -72,45 +70,51 @@ function DetailView() {
           </div>
         </div>
       </StyledHeader>
-      <main className="demo">
-        <div className="flexcontainer justify">
-          <Heading
-            title={DetailData.details.title}
-            width="198"
-            size="20"
-            as="h2"
-          />
-          <StyledBookmark />
-        </div>
+      <main className="demo gridContainer dark:bg-black">
         <div>
-          <MovieRating
-           
-            voteAverage={DetailData.details.vote_average}
-          />
-        </div>
-        <div className="containerLabel">
-          <CategoryLabel title="HORROR" />
-          <CategoryLabel title="MYSTERY" />
-          <CategoryLabel title="THRILER" />
-        </div>
+          <div className="flexcontainer justify">
+            <Heading
+              title={DetailData.details.title}
+              width="198"
+              size="20"
+              as="h2"
+            />
+            <Favorite />
+          </div>
+          <div>
+            <MovieRating voteAverage={DetailData.details.vote_average} />
+          </div>
+          <div className="containerLabel">
+            <CategoryLabel title="HORROR" />
+            <CategoryLabel title="MYSTERY" />
+            <CategoryLabel title="THRILER" />
+          </div>
 
-        <section className="gggg">
-          <div className="flexdiv">
-            <h4>Length</h4>
-            <p>{DetailData.details.runtime}</p>
-          </div>
-          <div className="flexdiv">
-            <h4>Language</h4>
-            <p>{DetailData.details.spoken_languages[0].name}</p>
-          </div>
-          <div className="flexdiv">
-            <h4>Rating</h4>
-            <p>{DetailData.details.vote_count}</p>
-          </div>
-        </section>
-        <MovieDescription />
-        <MovieCast data={DetailData.cast} />
+          <section className="gggg">
+            <div className="flexdiv">
+              <h4>Length</h4>
+              <p className="dark:text-white">{DetailData.details.runtime}</p>
+            </div>
+            <div className="flexdiv">
+              <h4>Language</h4>
+              <p className="dark:text-white">
+                {DetailData.details.spoken_languages[0].name}
+              </p>
+            </div>
+            <div className="flexdiv">
+              <h4>Rating</h4>
+              <p className="dark:text-white">{DetailData.details.vote_count}</p>
+            </div>
+          </section>
+          <MovieDescription />
+          <MovieCast data={DetailData.cast} />
+        </div>
       </main>
+      <footer className="gridContainer dark:bg-black">
+        <nav>
+          <FooterComponent />
+        </nav>
+      </footer>
     </div>
   );
 }

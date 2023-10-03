@@ -21,9 +21,9 @@ margin-top:8px;
 
 const Time = () => {
     return (
-        <StyledDiv>
+        <StyledDiv className=" dark:-black ">
           <StyledFaClock />
-          <StyledP>1hr 47m</StyledP>
+          <StyledP className= "dark:text-white">1hr 47m</StyledP>
         </StyledDiv>
       );
 }

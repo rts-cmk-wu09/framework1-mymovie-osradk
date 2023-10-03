@@ -4,7 +4,7 @@ import MoviePopular from "../components/MoviePopular";
 import styled from "styled-components";
 import CategoryLabel from "../components/CategoryLabel";
 import Time from "../components/Time";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 const StyledArticleP = styled.article`
   display: flex;
@@ -40,7 +40,8 @@ const MovieItem = (props) => {
   return (
     <>
       {MovieData.popular.map((data) => (
-        <StyledArticleP key={data.id}>
+        <Link to={`details/${data.id}`} key={data.id}>
+        <StyledArticleP>
           <figure>
             <Image
               width="85"
@@ -53,13 +54,13 @@ const MovieItem = (props) => {
             <MoviePopular />
 
             <div className="containerLabel">
-              {/* <CategoryLabel title="HORROR" />
+              <CategoryLabel title="HORROR" />
               <CategoryLabel title="MYSTERY" />
-              <CategoryLabel title="THRILER" /> */}
-              <Time />
+              <CategoryLabel title="THRILER" />
             </div>
+            <Time />
           </div>
-        </StyledArticleP>
+        </StyledArticleP> </Link>
       ))}
     </>
   );

@@ -16,7 +16,7 @@ width: ${props => props.width}px;
 `;
 
 const Heading = (props) => {
-  return <StyledHeading {...props}>{props.title}</StyledHeading>;
+  return <StyledHeading className= "dark:text-white" {...props}>{props.title}</StyledHeading>;
 };
 
 export default Heading;

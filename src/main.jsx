@@ -4,7 +4,8 @@ import ReactDOM from "react-dom/client";
 import Listevisning from "./Listevisning";
 import ErrorView from "./ErrorView";
 import DetailView from "./DetailView";
-
+import Bookmarks from "./Bookmarks";
+import Favorite from "./components/Favorite";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -18,13 +19,15 @@ import { DetailsViewData } from "./DetailView";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorView />}>
-      <Route index loader={listViewData} element={<Listevisning />} />
 
+      <Route index loader={listViewData} element={<Listevisning />} />
+<Route path="/bookmarks"  element={<Bookmarks />}/>
       <Route
         path="/details/:id"
         loader={DetailsViewData}
         element={<DetailView />}
       />
+         <Route path="/favorite" element={<Favorite/>}/>
     </Route>
   )
 );
