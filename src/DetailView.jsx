@@ -79,7 +79,7 @@ function DetailView() {
               size="20"
               as="h2"
             />
-            <Favorite />
+            <Favorite movieId={DetailData.details.id} />
           </div>
           <div>
             <MovieRating voteAverage={DetailData.details.vote_average} />

@@ -19,15 +19,14 @@ import { DetailsViewData } from "./DetailView";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorView />}>
-
       <Route index loader={listViewData} element={<Listevisning />} />
-<Route path="/bookmarks"  element={<Bookmarks />}/>
+      <Route path="/bookmarks" element={<Bookmarks />} />
       <Route
         path="/details/:id"
         loader={DetailsViewData}
         element={<DetailView />}
       />
-         <Route path="/favorite" element={<Favorite/>}/>
+      {/* <Route path="/favorite/:id" element={<Favorite />} /> */}
     </Route>
   )
 );
