@@ -53,7 +53,7 @@ const Favorite = () => {
       },
       body: JSON.stringify({
         media_type: "movie",
-        media_id: { id }.id,
+        media_id: movieId,
         favorite: !favorite,
       }),
     };

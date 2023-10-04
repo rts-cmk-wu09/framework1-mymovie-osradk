@@ -5,7 +5,7 @@ import Listevisning from "./Listevisning";
 import ErrorView from "./ErrorView";
 import DetailView from "./DetailView";
 import Bookmarks from "./Bookmarks";
-import Favorite from "./components/Favorite";
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -26,7 +26,7 @@ const router = createBrowserRouter(
         loader={DetailsViewData}
         element={<DetailView />}
       />
-      {/* <Route path="/favorite/:id" element={<Favorite />} /> */}
+   
     </Route>
   )
 );
