@@ -64,12 +64,17 @@ export const listViewData = async () => {
     await axios(
       "https://api.themoviedb.org/3/movie/popular/?api_key=a1f2e68a40958dfb3a6c547ab28ee83d"
     ),
+    await axios("https://api.themoviedb.org/3/genre/movie/list?api_key=a1f2e68a40958dfb3a6c547ab28ee83d"),
   ]).then((values) => {
-    // console.log("Value: ", values)
+    console.log("Value: ", values)
+  
     return {
       nowShowing: values[0].value.data.results,
       popular: values[1].value.data.results,
+      genre:values[2].value.data.results,
     };
+
+
   });
 };
 

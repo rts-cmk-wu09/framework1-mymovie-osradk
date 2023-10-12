@@ -1,4 +1,5 @@
 import Image from "./components/Image";
+// const LazyImage = lazy(() => import("./components/Image"));
 import Heading from "./components/Heading";
 import FooterComponent from "./components/FooterComponent";
 import Switch from "./components/Switch";

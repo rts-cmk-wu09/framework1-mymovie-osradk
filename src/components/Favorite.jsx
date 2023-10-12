@@ -28,9 +28,11 @@ const Favorite = () => {
         const data = await response.json();
         const movieIdFromUrl = parseInt(id, 10);
 
-        const isMovieInFavorite = data.results.some(
-          (movie) => movie.id === movieIdFromUrl
-        );
+
+        // const isMovieInFavorite = data.results.some(
+        //   (movie) => movie.id === movieIdFromUrl
+        // );
+       const isMovieInFavorite = data.results.map(movie => movie.id).includes(movieIdFromUrl);
 
         setFavorite(isMovieInFavorite); // Indstil favoritstatus baseret på API-svaret
       } catch (error) {
