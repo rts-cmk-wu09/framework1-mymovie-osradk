@@ -78,8 +78,10 @@ header {
   gap: 16px;
 }
 .containerLabel {
-  display:flex;
-  margin-bottom:16px;
+  display: flex;
+  flex-direction: row;
+gap:10 px;
+  margin-bottom: 16px;
   margin-top: 16px;
 }
 

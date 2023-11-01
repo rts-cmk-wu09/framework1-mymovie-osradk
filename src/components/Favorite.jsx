@@ -20,7 +20,7 @@ const Favorite = () => {
             headers: {
               accept: "application/json",
               Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMWYyZTY4YTQwOTU4ZGZiM2E2YzU0N2FiMjhlZTgzZCIsInN1YiI6IjY0NTg5YjRhMWI3MGFlMDBmZDZhYmJkZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-j_u_YEyEImA7LWssb-OnID5OVClpbSfpN4pVehX0Zg",
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzM2I3ZjljYWZhNWYzMTg2M2I2ZTA5ZDcyZGJlOTllZiIsInN1YiI6IjY1NDJlMjYzMWFjMjkyMDBjNDk0ZDgzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.g-K0WMqjG4Cc6HrnwHnV_8igigBVBlHBOle6dW_8j3o",
             },
           }
         );
@@ -28,11 +28,12 @@ const Favorite = () => {
         const data = await response.json();
         const movieIdFromUrl = parseInt(id, 10);
 
-
         // const isMovieInFavorite = data.results.some(
         //   (movie) => movie.id === movieIdFromUrl
         // );
-       const isMovieInFavorite = data.results.map(movie => movie.id).includes(movieIdFromUrl);
+        const isMovieInFavorite = data.results
+          .map((movie) => movie.id)
+          .includes(movieIdFromUrl);
 
         setFavorite(isMovieInFavorite); // Indstil favoritstatus baseret på API-svaret
       } catch (error) {
@@ -51,7 +52,7 @@ const Favorite = () => {
         accept: "application/json",
         "content-type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMWYyZTY4YTQwOTU4ZGZiM2E2YzU0N2FiMjhlZTgzZCIsInN1YiI6IjY0NTg5YjRhMWI3MGFlMDBmZDZhYmJkZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-j_u_YEyEImA7LWssb-OnID5OVClpbSfpN4pVehX0Zg",
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzM2I3ZjljYWZhNWYzMTg2M2I2ZTA5ZDcyZGJlOTllZiIsInN1YiI6IjY1NDJlMjYzMWFjMjkyMDBjNDk0ZDgzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.g-K0WMqjG4Cc6HrnwHnV_8igigBVBlHBOle6dW_8j3o",
       },
       body: JSON.stringify({
         media_type: "movie",

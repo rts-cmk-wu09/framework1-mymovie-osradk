@@ -3,11 +3,34 @@ import Image from "./components/Image";
 import Heading from "./components/Heading";
 import FooterComponent from "./components/FooterComponent";
 import Switch from "./components/Switch";
-import { Link } from "react-router-dom";
+import {  useLoaderData, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import CategoryLabel from "./components/CategoryLabel";
+
 
 const Bookmarks = () => {
   const [allFavorites, setAllFavorites] = useState();
+  const MovieData = useLoaderData();
+  console.log( " asoooooo" ,  MovieData)
+
+
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const response = await fetch(
+          "https://api.themoviedb.org/3/genre/movie/list?api_key=33b7f9cafa5f31863b6e09d72dbe99ef"
+        ); 
+        const data = await response.json();
+        setGenres(data.genres);
+      } catch (error) {
+        console.error("Error fetching genres:", error);
+      }
+    };
+
+    fetchGenres();
+  }, []);
 
   useEffect(() => {
     // Funktion til at tjekke om filmen er favorit
@@ -20,7 +43,7 @@ const Bookmarks = () => {
             headers: {
               accept: "application/json",
               Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMWYyZTY4YTQwOTU4ZGZiM2E2YzU0N2FiMjhlZTgzZCIsInN1YiI6IjY0NTg5YjRhMWI3MGFlMDBmZDZhYmJkZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-j_u_YEyEImA7LWssb-OnID5OVClpbSfpN4pVehX0Zg",
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzM2I3ZjljYWZhNWYzMTg2M2I2ZTA5ZDcyZGJlOTllZiIsInN1YiI6IjY1NDJlMjYzMWFjMjkyMDBjNDk0ZDgzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.g-K0WMqjG4Cc6HrnwHnV_8igigBVBlHBOle6dW_8j3o",
             },
           }
         );
@@ -34,10 +57,9 @@ const Bookmarks = () => {
     checkFavoriteStatus(); // Kald funktionen til at hente favoritstatus
   }, []);
 
-  console.log("favorites: " + allFavorites);
-
   return (
     <>
+
       <div className=" h-screen  dark:bg-black">
         <header className="gridContainer dark:bg-black">
           <Heading
@@ -49,26 +71,15 @@ const Bookmarks = () => {
           />
 
           <Switch />
-        </header>
-        <main className="   dark:bg-black mt-12 ">
+        </header>   
+        <main className="   dark:bg-black mt-12  mb-5" >
           <div className=" flex flex-col  justify-between pt-[30px]">
             {allFavorites &&
               allFavorites.map((favorite) => (
                 <Link to={`/details/${favorite.id}`} key={favorite.id}>
                   <div className=" dark:bg-black p-4 rounded-md  ">
                     <div>
-                    <Heading
-                        style={{
-                          paddingBottom: "10px",
-                          fontSize: "18px",
-                          color:"110E47",
-                          paddingLeft:"25px",
-                 
-                        }}
-                        title={favorite.title}
-                        size="14"
-                        as="h3"
-                      />
+                
                       <Image
                         className="flex justify-center  opject-cover"
                         width="150"
@@ -79,7 +90,26 @@ const Bookmarks = () => {
                       />
                     </div>
                     <div>
-                     
+                    <Heading
+                        style={{
+                          paddingTop: "10px",
+                          fontSize: "18px",
+                          color:"110E47",
+                          paddingLeft:"18px",
+                 
+                        }}
+                        title={favorite.title}
+                        size="14"
+                        as="h3"
+                      />
+                    <div  className="containerLabel">
+                    {favorite.genre_ids.map((genreId) => (
+                      <CategoryLabel
+                        key={genreId}
+                        title={getGenreNameById(genreId, genres)}
+                      />
+                    ))}
+        </div>
                     </div>
                   </div>
                   <hr style={{ color: "gray", width: "inherit" }} />
@@ -96,5 +126,11 @@ const Bookmarks = () => {
     </>
   );
 };
+function getGenreNameById(genreId, genres) {
+  const genre = genres.find((genre) => genre.id === genreId);
+  return genre ? genre.name : "Ukendt genre";
+ }
+
+
 
 export default Bookmarks;

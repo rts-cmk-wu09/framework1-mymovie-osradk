@@ -27,6 +27,7 @@ const router = createBrowserRouter(
       {/* <Route path="/bookmarks" element={<Bookmarks />} /> */}
       <Route
         path="/bookmarks"
+        loader={listViewData} 
         element={
        
           <Suspense fallback={
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
             {<LoadingView />}
               </div>
             }>
+           
             <Bookmarks />
           </Suspense>
         }

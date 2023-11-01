@@ -85,11 +85,10 @@ function DetailView() {
             <MovieRating voteAverage={DetailData.details.vote_average} />
           </div>
           <div className="containerLabel">
-            <CategoryLabel title="HORROR" />
-            <CategoryLabel title="MYSTERY" />
-            <CategoryLabel title="THRILER" />
+            {DetailData.details.genres.map((genre) => (
+              <CategoryLabel key={genre.id} title={genre.name} />
+            ))}
           </div>
-
           <section className="gggg">
             <div className="flexdiv">
               <h4>Length</h4>
@@ -123,11 +122,13 @@ export const DetailsViewData = async ({ params }) => {
   console.log("params:" + params.id);
   return Promise.allSettled([
     axios(
-      `http://api.themoviedb.org/3/movie/${params.id}?api_key=a1f2e68a40958dfb3a6c547ab28ee83d&append_to_response=videos`
+      `http://api.themoviedb.org/3/movie/${params.id}?api_key=33b7f9cafa5f31863b6e09d72dbe99ef&append_to_response=videos`
     ),
     axios(
-      `http://api.themoviedb.org/3/movie/${params.id}/credits?api_key=a1f2e68a40958dfb3a6c547ab28ee83d`
+      `http://api.themoviedb.org/3/movie/${params.id}/credits?api_key=33b7f9cafa5f31863b6e09d72dbe99ef`
     ),
+
+
   ]).then((data) => {
     console.log("data: " + data);
     return {
