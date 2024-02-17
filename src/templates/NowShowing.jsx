@@ -56,19 +56,19 @@ const NowShowing = () => {
               paddingLeft="0"
               margin="0"
             />
-            <MovieRating voteAverage={data.vote_average}/>
+            <MovieRating voteAverage={data.vote_average} />
           </StyledArticle>
         </Link>
       ))}
     </>
   );
 };
-export async function loader() {
-  const res = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing/?api_key=a1f2e68a40958dfb3a6c547ab28ee83d"
-  );
-  const data = await res.json();
-  return data;
-}
+// export async function loader() {
+//   const res = await fetch(
+//     "https://api.themoviedb.org/3/movie/now_playing/?api_key=a1f2e68a40958dfb3a6c547ab28ee83d"
+//   );
+//   const data = await res.json();
+//   return data;
+// }
 
 export default NowShowing;

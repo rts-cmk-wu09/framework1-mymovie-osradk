@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { useState } from "react";
 import ReactSwitch from "react-switch";
+import { useOutletContext } from "react-router-dom";
+// useOutletContexat håndtere kontekst og deling af data mellem forskellige dele af applikation.
+// Dette kan være en måde at styre applikationsniveauet eller globalt state, som f.eks. 
+//temaetilstand (dark mode).
 
 const StyledSwitch = styled(ReactSwitch)`
   grid-column-start: 3;
@@ -11,10 +14,11 @@ const StyledSwitch = styled(ReactSwitch)`
 
 `;
 
-const Switch = () => {
-  const [checked, setChecked] = useState(false);
+const Switch = (props) => {
+  const [darkmode, setdarkmode] = useOutletContext();
+
   const handleChange = () => {
-    setChecked(!checked);
+    setdarkmode(!darkmode);
   };
   return (
     <StyledSwitch
@@ -25,7 +29,7 @@ const Switch = () => {
       onHandleColor="#000000"
       uncheckedIcon={false}
       checkedIcon={false}
-      checked={checked}
+      checked={darkmode}
       onChange={handleChange}
     />
   );

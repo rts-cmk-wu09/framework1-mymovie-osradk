@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { FaRegBookmark } from "react-icons/fa";
 import { FcFilmReel } from "react-icons/fc";
 import { BsTicket } from "react-icons/bs";
+import { Link } from "react-router-dom";
+
 
 const StyledBookmark = styled(FaRegBookmark)`
   font-size: 24px;
@@ -25,10 +27,10 @@ const StyledDiv = styled.div`
 
 const FooterComponent = () => {
   return (
-    <StyledDiv>
-      <StyledFilm />
+    <StyledDiv className="gridContainer dark:bg-black">
+      <Link to="/"> <StyledFilm /> </Link>
       <StyledFTicket />
-      <StyledBookmark />
+  <Link to="/bookmarks"> <StyledBookmark /> </Link>
     </StyledDiv>
   );
 };
